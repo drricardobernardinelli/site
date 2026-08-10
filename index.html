@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dr. Ricardo Maia Bernardinelli | Atendimento Médico</title>
+  <meta name="description" content="Atendimento médico individualizado por telemedicina. Avaliação clínica, acompanhamento de doenças crônicas, exames e cuidados preventivos.">
+  <meta name="theme-color" content="#0f4c5c">
+
+  <meta property="og:title" content="Dr. Ricardo Maia Bernardinelli | Atendimento Médico">
+  <meta property="og:description" content="Atendimento médico individualizado por telemedicina.">
+  <meta property="og:type" content="website">
+
+  <style>
+    :root {
+      --primary: #0f4c5c;
+      --primary-dark: #083642;
+      --accent: #2f7d8c;
+      --bg: #f7fafb;
+      --surface: #ffffff;
+      --text: #17313a;
+      --muted: #60747b;
+      --border: #dce7ea;
+      --shadow: 0 14px 40px rgba(15, 76, 92, .10);
+      --radius: 18px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    .brand span {
+      display: block;
+      font-size: .76rem;
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: -2px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 24px;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: .92rem;
+      color: #40565d;
+      transition: color .2s;
+    }
+
+    nav a:hover { color: var(--primary); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 0;
+      border-radius: 10px;
+      padding: 13px 20px;
+      font-weight: 700;
+      font-size: .93rem;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(15,76,92,.18);
+    }
+
+    .btn-primary {
+      color: white;
+      background: var(--primary);
+    }
+
+    .btn-primary:hover { background: var(--primary-dark); }
+
+    .btn-outline {
+      color: var(--primary);
+      background: white;
+      border: 1px solid var(--primary);
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at 85% 20%, rgba(47,125,140,.12), transparent 30%),
+        linear-gradient(135deg, #eef6f7 0%, #ffffff 65%);
+      padding: 92px 0 82px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .78rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: clamp(2.45rem, 5vw, 4.35rem);
+      line-height: 1.08;
+      letter-spacing: -.045em;
+      max-width: 760px;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      font-size: 1.12rem;
+      color: var(--muted);
+      max-width: 650px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-card {
+      min-height: 520px;
+      border-radius: 28px;
+      background: linear-gradient(160deg, #dceef1, #f8fbfc);
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: end;
+      padding: 28px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 270px;
+      height: 270px;
+      border-radius: 50%;
+      background: rgba(15,76,92,.10);
+      top: -90px;
+      right: -70px;
+    }
+
+    .doctor-placeholder {
+      width: 100%;
+      min-height: 280px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.78);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--muted);
+      border: 1px dashed #b8ccd1;
+      position: relative;
+      z-index: 1;
+      padding: 30px;
+    }
+
+    .doctor-placeholder strong {
+      display: block;
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    section { padding: 86px 0; }
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 42px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 3.4vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: -.035em;
+      margin-bottom: 14px;
+    }
+
+    .section-head p { color: var(--muted); font-size: 1.03rem; }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 6px 25px rgba(15,76,92,.05);
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 9px;
+    }
+
+    .card p { color: var(--muted); font-size: .95rem; }
+
+    .icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: #eaf4f5;
+      color: var(--primary);
+      font-size: 1.25rem;
+      margin-bottom: 18px;
+    }
+
+    .about {
+      background: white;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .72fr 1.28fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .profile-box {
+      min-height: 500px;
+      background: linear-gradient(150deg, #dceef1, #f5f9fa);
+      border-radius: 26px;
+      display: grid;
+      place-items: center;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .profile-box div {
+      width: 100%;
+      min-height: 330px;
+      border: 1px dashed #b8ccd1;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      padding: 25px;
+    }
+
+    .check-list {
+      list-style: none;
+      display: grid;
+      gap: 15px;
+      margin: 28px 0;
+    }
+
+    .check-list li {
+      position: relative;
+      padding-left: 28px;
+      color: #40565d;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .step {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 18px;
+    }
+
+    .step-number {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: .78rem;
+      margin-bottom: 12px;
+    }
+
+    .step h3 { font-size: 1rem; margin-bottom: 7px; }
+    .step p { color: var(--muted); font-size: .88rem; }
+
+    .pricing {
+      background: var(--primary);
+      color: white;
+    }
+
+    .pricing .section-head p { color: #cce0e4; }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .price-card {
+      background: white;
+      color: var(--text);
+      border-radius: 20px;
+      padding: 34px;
+      border: 1px solid rgba(255,255,255,.2);
+    }
+
+    .price-card h3 { font-size: 1.25rem; }
+    .price {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 14px 0 5px;
+    }
+
+    .price-note {
+      color: var(--muted);
+      font-size: .88rem;
+      margin-bottom: 22px;
+    }
+
+    .faq {
+      background: white;
+    }
+
+    details {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    summary::after {
+      content: "+";
+      color: var(--accent);
+      font-size: 1.3rem;
+    }
+
+    details[open] summary::after { content: "−"; }
+
+    details p {
+      color: var(--muted);
+      max-width: 850px;
+      margin-top: 12px;
+    }
+
+    .cta {
+      padding: 76px 0;
+      background: #eaf4f5;
+    }
+
+    .cta-box {
+      background: white;
+      border-radius: 24px;
+      padding: 48px;
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .cta-box h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .cta-box p { color: var(--muted); }
+
+    footer {
+      background: #092f39;
+      color: #d8e7e9;
+      padding: 45px 0 90px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    footer h3 { color: white; margin-bottom: 12px; }
+    footer p, footer a { color: #b9cdd1; font-size: .9rem; }
+    footer a:hover { color: white; }
+
+    .footer-links {
+      display: grid;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .legal {
+      border-top: 1px solid rgba(255,255,255,.12);
+      margin-top: 35px;
+      padding-top: 20px;
+      font-size: .78rem;
+      color: #9fb7bc;
+    }
+
+    .whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2000;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #25d366;
+      color: white;
+      font-size: 1.55rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,.2);
+    }
+
+    .mobile-cta {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+      .hero-grid, .about-grid { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .cta-box { flex-direction: column; align-items: flex-start; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .container { width: min(calc(100% - 28px), var(--max)); }
+      section { padding: 62px 0; }
+      .hero { padding: 64px 0 55px; }
+      .hero-actions .btn { width: 100%; }
+      .hero-card { min-height: 320px; }
+      .grid-3, .price-grid, .steps, .footer-grid { grid-template-columns: 1fr; }
+      .cta-box { padding: 32px 24px; }
+      .cta-box .btn { width: 100%; }
+      .whatsapp { bottom: 74px; }
+      .mobile-cta {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1500;
+        background: white;
+        padding: 10px 14px;
+        border-top: 1px solid var(--border);
+      }
+      .mobile-cta .btn { width: 100%; }
+    }
+  </style>
+</head>
+
+<!-- GitHub Pages ready: index.html + foto-medico-1.png + foto-medico-2.png -->
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#inicio" class="brand">
+      Dr. Ricardo Maia Bernardinelli
+      <span>Atendimento médico</span>
+    </a>
+
+    <nav>
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#telemedicina">Telemedicina</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <a class="btn btn-primary" href="https://wa.me/5567992417490?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20por%20telemedicina." target="_blank" rel="noopener">Agendar consulta</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="inicio">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Atendimento médico</div>
+        <h1>Cuidado médico individualizado, onde você estiver.</h1>
+        <p>
+          Avaliação clínica, acompanhamento de condições crônicas,
+          análise de exames e cuidados preventivos, com atendimento
+          presencial e por telemedicina.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/5567992417490?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20por%20telemedicina." target="_blank" rel="noopener">Agendar consulta</a>
+          <a class="btn btn-outline" href="#telemedicina">Conhecer telemedicina</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <!-- SUBSTITUA ESTE BLOCO PELA SUA FOTO -->
+        <div class="doctor-placeholder" style="padding:0; border:0; background:transparent;">
+          <img src="foto-medico-1.png" alt="Dr. Ricardo Maia Bernardinelli" style="width:100%; height:100%; max-height:520px; object-fit:contain; display:block; border-radius:20px;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Serviços</div>
+        <h2>Em quais situações posso ajudar?</h2>
+        <p>
+          O atendimento é individualizado e considera os sintomas,
+          histórico clínico, medicamentos, exames e fatores de risco de cada paciente.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <div class="icon">🩺</div>
+          <h3>Avaliação clínica</h3>
+          <p>Investigação de sintomas novos ou persistentes e definição dos próximos passos.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">❤️</div>
+          <h3>Hipertensão</h3>
+          <p>Acompanhamento da pressão arterial e avaliação dos fatores de risco cardiovascular.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">◉</div>
+          <h3>Diabetes e metabolismo</h3>
+          <p>Acompanhamento clínico da glicemia e de alterações metabólicas quando indicado.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">⚖</div>
+          <h3>Obesidade e peso</h3>
+          <p>Avaliação individualizada dos fatores associados ao excesso de peso e possibilidades terapêuticas.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">⌁</div>
+          <h3>Exames</h3>
+          <p>Interpretação de exames laboratoriais e de imagem dentro do contexto clínico.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">＋</div>
+          <h3>Prevenção</h3>
+          <p>Avaliação de fatores de risco, hábitos de vida e medidas preventivas adequadas.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="sobre">
+    <div class="container about-grid">
+      <div class="profile-box">
+        <!-- SUBSTITUA ESTE BLOCO PELA SUA FOTO -->
+        <div style="padding:0; border:0; background:transparent; overflow:hidden;">
+          <img src="foto-medico-2.png" alt="Dr. Ricardo Maia Bernardinelli" style="width:100%; height:100%; min-height:330px; object-fit:cover; object-position:center; display:block; border-radius:20px;">
+        </div>
+      </div>
+
+      <div>
+        <div class="eyebrow">Sobre o médico</div>
+        <h2>Dr. Ricardo Maia Bernardinelli</h2>
+        <p style="color:var(--muted); margin-top:16px;">
+          Médico formado pela <strong>PUC Minas</strong>, com atuação em atendimento clínico de adultos.
+        </p>
+
+        <p style="color:var(--muted); margin-top:14px;">
+          O atendimento busca compreender o paciente de forma individualizada,
+          considerando sintomas, histórico, medicamentos, fatores de risco e exames.
+        </p>
+
+        <ul class="check-list">
+          <li>Consulta baseada em avaliação clínica individualizada</li>
+          <li>Comunicação clara sobre diagnóstico e tratamento</li>
+          <li>Condutas orientadas pelas evidências científicas disponíveis</li>
+          <li>Quando necessário, encaminhamento para avaliação especializada</li>
+        </ul>
+
+        <a class="btn btn-primary" href="https://wa.me/5567992417490?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20por%20telemedicina." target="_blank" rel="noopener">Agendar consulta</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="telemedicina">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Telemedicina</div>
+        <h2>Consulta médica sem precisar sair de casa.</h2>
+        <p>
+          Para situações em que a avaliação presencial não é necessária,
+          a telemedicina oferece praticidade para realizar o atendimento por videoconferência.
+        </p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3>Agendamento</h3>
+          <p>Escolha o melhor dia e horário disponíveis.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3>Consulta</h3>
+          <p>Acesse a consulta pelo celular ou computador.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3>Avaliação</h3>
+          <p>Converse sobre sintomas, histórico, medicamentos e exames.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">04</div>
+          <h3>Conduta</h3>
+          <p>Definição dos próximos passos de acordo com a avaliação.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">05</div>
+          <h3>Acompanhamento</h3>
+          <p>Reavaliação quando houver indicação clínica.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:30px; padding:24px; border-radius:16px; background:#fff; border:1px solid var(--border); color:var(--muted);">
+        <strong style="color:var(--text);">Importante:</strong>
+        algumas situações exigem exame físico, procedimentos ou avaliação presencial.
+        Se isso for identificado durante a consulta, você será orientado sobre a necessidade
+        de atendimento presencial. Em situações de emergência, procure imediatamente um
+        serviço de urgência e emergência.
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="agendamento">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow" style="color:#9fd0d8;">Agendamento</div>
+        <h2>Escolha a modalidade de atendimento.</h2>
+        <p>
+          Os valores abaixo são campos editáveis. Substitua pelos seus valores antes de publicar.
+        </p>
+      </div>
+
+      <div class="price-grid">
+        <article class="price-card">
+          <h3>Consulta por telemedicina</h3>
+          <div class="price">R$ 150,00</div>
+          <div class="price-note">Consulta médica por videoconferência.</div>
+          <a
+            class="btn btn-primary"
+            href="https://wa.me/5567992417490?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta%20por%20telemedicina."
+            target="_blank"
+            rel="noopener"
+          >
+            Agendar telemedicina
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">FAQ</div>
+        <h2>Perguntas frequentes</h2>
+      </div>
+
+      <div>
+        <details>
+          <summary>A consulta pode ser realizada por telemedicina?</summary>
+          <p>
+            Sim. Quando a situação clínica permitir, o atendimento poderá ser realizado
+            por videoconferência.
+          </p>
+        </details>
+
+        <details>
+          <summary>Posso apresentar meus exames?</summary>
+          <p>
+            Sim. Exames laboratoriais e de imagem podem ser apresentados durante a consulta
+            e analisados dentro do contexto clínico.
+          </p>
+        </details>
+
+        <details>
+          <summary>É possível receber receitas pela telemedicina?</summary>
+          <p>
+            Quando houver indicação médica, poderão ser emitidas prescrições de acordo
+            com a legislação e as normas vigentes.
+          </p>
+        </details>
+
+        <details>
+          <summary>Posso receber solicitação de exames?</summary>
+          <p>
+            Sim. Exames complementares podem ser solicitados quando houver indicação clínica.
+          </p>
+        </details>
+
+        <details>
+          <summary>A telemedicina substitui a consulta presencial?</summary>
+          <p>
+            Não necessariamente. Quando houver necessidade de exame físico, procedimento
+            ou outra avaliação presencial, o paciente será orientado.
+          </p>
+        </details>
+
+        <details>
+          <summary>O médico pode encaminhar para outro especialista?</summary>
+          <p>
+            Sim. Quando houver indicação, o paciente poderá ser orientado a procurar
+            avaliação especializada.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-box">
+        <div>
+          <h2>Pronto para cuidar da sua saúde?</h2>
+          <p>Agende sua consulta médica por telemedicina.</p>
+        </div>
+
+        <a class="btn btn-primary" href="https://wa.me/5567992417490?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20por%20telemedicina." target="_blank" rel="noopener">Agendar consulta</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3>Dr. Ricardo Maia Bernardinelli</h3>
+        <p>
+          Atendimento médico individualizado por telemedicina.
+        </p>
+      </div>
+
+      <div>
+        <h3>Navegação</h3>
+        <ul class="footer-links">
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#telemedicina">Telemedicina</a></li>
+          <li><a href="#faq">Perguntas frequentes</a></li>
+          <li><a href="#agendamento">Agendamento</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Contato</h3>
+        <ul class="footer-links">
+          <li><a href="tel:+5567992417490">Telefone: (67) 99241-7490</a></li>
+          <li><a href="mailto:dr.ricardobernardinelli@gmail.com">dr.ricardobernardinelli@gmail.com</a></li>
+          <li>Campo Grande — MS</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="legal">
+      <p>
+        CRM/MS 16.796 · Este site possui caráter informativo e não substitui
+        avaliação médica. Em situações de emergência, procure um serviço de urgência e emergência.
+      </p>
+      <p style="margin-top:8px;">
+        © <span id="year"></span> Dr. Ricardo Maia Bernardinelli. Todos os direitos reservados.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- BOTÃO FLUTUANTE DO WHATSAPP -->
+<a
+  class="whatsapp"
+  href="https://wa.me/5567992417490?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta."
+  target="_blank"
+  rel="noopener"
+  aria-label="Agendar pelo WhatsApp"
+  title="Agendar pelo WhatsApp"
+>☏</a>
+
+<div class="mobile-cta">
+  <a
+    class="btn btn-primary"
+    href="https://wa.me/5567992417490?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta."
+    target="_blank"
+    rel="noopener"
+  >
+    Agendar pelo WhatsApp
+  </a>
+</div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
