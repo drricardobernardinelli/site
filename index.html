@@ -14,7 +14,23 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+
     gtag('config', 'AW-18382138189');
+
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-18382138189/Au97CJ7e3t8cEM3WpL1E',
+          'value': 1.0,
+          'currency': 'BRL',
+          'event_callback': callback
+      });
+      return false;
+    }
   </script>
 
 
@@ -544,9 +560,7 @@
       </ul>
     </nav>
 
-    <a class="btn btn-primary" href="https://wa.me/5567992417490?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20por%20telemedicina." onclick="gtag('event', 'conversion', {
-              'send_to': 'AW-18382138189/Au97CJ7e3t8cEM3WpL1E'
-            });"  target="_blank" rel="noopener">Agendar consulta</a>
+    <a class="btn btn-primary" href="https://wa.me/5567992417490?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20por%20telemedicina." rel="noopener" onclick="return gtag_report_conversion(this.href);">Agendar consulta</a>
   </div>
 </header>
 
@@ -564,9 +578,7 @@
         </p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://wa.me/5567992417490?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20por%20telemedicina." onclick="gtag('event', 'conversion', {
-              'send_to': 'AW-18382138189/Au97CJ7e3t8cEM3WpL1E'
-            });"  target="_blank" rel="noopener">Agendar consulta</a>
+          <a class="btn btn-primary" href="https://wa.me/5567992417490?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20por%20telemedicina." rel="noopener" onclick="return gtag_report_conversion(this.href);">Agendar consulta</a>
           <a class="btn btn-outline" href="#telemedicina">Conhecer telemedicina</a>
         </div>
       </div>
@@ -659,9 +671,7 @@
           <li>Quando necessário, encaminhamento para avaliação especializada</li>
         </ul>
 
-        <a class="btn btn-primary" href="https://wa.me/5567992417490?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20por%20telemedicina." onclick="gtag('event', 'conversion', {
-              'send_to': 'AW-18382138189/Au97CJ7e3t8cEM3WpL1E'
-            });"  target="_blank" rel="noopener">Agendar consulta</a>
+        <a class="btn btn-primary" href="https://wa.me/5567992417490?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20por%20telemedicina." rel="noopener" onclick="return gtag_report_conversion(this.href);">Agendar consulta</a>
       </div>
     </div>
   </section>
@@ -737,11 +747,8 @@
           <a
             class="btn btn-primary"
             href="https://wa.me/5567992417490?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta%20por%20telemedicina."
-            onclick="gtag('event', 'conversion', {
-              'send_to': 'AW-18382138189/Au97CJ7e3t8cEM3WpL1E'
-            });"  target="_blank"
             rel="noopener"
-          >
+           onclick="return gtag_report_conversion(this.href);">
             Agendar telemedicina
           </a>
         </article>
@@ -815,9 +822,7 @@
           <p>Agende sua consulta médica por telemedicina.</p>
         </div>
 
-        <a class="btn btn-primary" href="https://wa.me/5567992417490?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20por%20telemedicina." onclick="gtag('event', 'conversion', {
-              'send_to': 'AW-18382138189/Au97CJ7e3t8cEM3WpL1E'
-            });"  target="_blank" rel="noopener">Agendar consulta</a>
+        <a class="btn btn-primary" href="https://wa.me/5567992417490?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20por%20telemedicina." rel="noopener" onclick="return gtag_report_conversion(this.href);">Agendar consulta</a>
       </div>
     </div>
   </section>
@@ -871,23 +876,17 @@
 <a
   class="whatsapp"
   href="https://wa.me/5567992417490?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta."
-  onclick="gtag('event', 'conversion', {
-              'send_to': 'AW-18382138189/Au97CJ7e3t8cEM3WpL1E'
-            });"  target="_blank"
   rel="noopener"
   aria-label="Agendar pelo WhatsApp"
   title="Agendar pelo WhatsApp"
->☏</a>
+ onclick="return gtag_report_conversion(this.href);">☏</a>
 
 <div class="mobile-cta">
   <a
     class="btn btn-primary"
     href="https://wa.me/5567992417490?text=Olá%2C%20gostaria%20de%20agendar%20uma%20consulta."
-    onclick="gtag('event', 'conversion', {
-              'send_to': 'AW-18382138189/Au97CJ7e3t8cEM3WpL1E'
-            });"  target="_blank"
     rel="noopener"
-  >
+   onclick="return gtag_report_conversion(this.href);">
     Agendar pelo WhatsApp
   </a>
 </div>
